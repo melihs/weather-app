@@ -5,6 +5,7 @@
 ## Weather data for the app 
 - weather data Api  https://openweathermap.org/ 
 ## Dependencies in the Project
+- ipinfo  https://github.com/IonicaBizau/node-ipinfo
 - request https://github.com/request/request
 
 
