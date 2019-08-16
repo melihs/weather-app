@@ -1,15 +1,28 @@
 const request = require("request");
-let url = "http://api.openweathermap.org/data/2.5/weather?q=istanbul,tr&APPID=992147213ce1b4c0126caf63f4b9f481&units=metric";
 
-module.exports = function(callback){
+
+module.exports = function(location,callback){
+
+    let encodedLocationURI = encodeURIComponent(location);
+    let url = "http://api.openweathermap.org/data/2.5/weather?q=" + encodedLocationURI + ",tr&APPID=992147213ce1b4c0126caf63f4b9f481&units=metric";
+
+    if(!location) {
+        return callback('Location data not found!');
+    }
+
     request({
-    url : url,
+    url :url,
     json : true,
 },function (error,response,body) {
     if(error) {
         callback("weather get data failed!");
     } else {
-        callback(body.name +"'da hava sıcaklığı: " + body.main.temp + " derece");
+       try {
+           callback("\n");
+           callback(body.name + ' : ' + body.main.temp + ' C');
+       } catch(e) {
+           callback("weather get data failed!");
+       }
     }
 
 });
