@@ -19,7 +19,8 @@ module.exports = function(location,callback){
     } else {
        try {
            callback("\n");
-           callback(body.name + ' : ' + body.main.temp + ' C');
+           callback(body.name + ' : ' + body.main.temp + ' C\n');
+           callback('status : ' + body.weather[0].main + ' (' + body.weather[0].description + ')');
        } catch(e) {
            callback("weather get data failed!");
        }
