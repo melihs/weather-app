@@ -13,6 +13,7 @@ const argv = yargs
     })
     .help()
     .argv;
+
 console.log("*************************************************");
 console.log("*                                               *");
 console.log("*                WEATHER CONSOLE                *");
