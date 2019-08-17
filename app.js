@@ -22,7 +22,6 @@ console.log("*************************************************\n");
 
 if(typeof argv.location == 'string' && argv.location.length > 0) {
     console.log("> Location entered...");
-
     weather(argv.location,function (currentWeather) {
         console.log(currentWeather);
     })
@@ -33,9 +32,9 @@ if(typeof argv.location == 'string' && argv.location.length > 0) {
         if(!location) {
             console.log("Location not found");
         } else {
-            weather(location.city,function(currentWeather){
-                console.log(currentWeather);
-            });
+            // weather(location.city,function(currentWeather){
+            //     console.log(currentWeather);
+            // });
         }
     });
 }
