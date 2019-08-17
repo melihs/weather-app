@@ -1,7 +1,15 @@
 const ipInfo = require("ipinfo");
 
-module.exports = function(callback){
-    ipInfo((err,response) => {
-        callback(err || response);
+module.exports = function(){
+    return new Promise(function(resolve,reject){
+        ipInfo((err,response) => {
+            if(response) {
+                resolve(response);
+            }else {
+                reject(err);
+            }
+        });
     });
 }
+
+

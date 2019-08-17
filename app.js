@@ -22,20 +22,21 @@ console.log("*************************************************\n");
 
 if(typeof argv.location == 'string' && argv.location.length > 0) {
     console.log("> Location entered...");
-    weather(argv.location,function (currentWeather) {
+
+    weather(argv.location).then(function (currentWeather) {
         console.log(currentWeather);
-    })
+    }).catch(function (err) {
+        console.log(err);
+    });
 }else {
     console.log("> Calculating your location...");
 
-    location(function (location) {
-        if(!location) {
-            console.log("Location not found");
-        } else {
-            // weather(location.city,function(currentWeather){
-            //     console.log(currentWeather);
-            // });
-        }
+    location().then(function(location){
+        return weather(location.city)
+    }).then(function (currentWeather) {
+        console.log(currentWeather);
+    }).catch(function (err) {
+        console.log(err);
     });
 }
 
